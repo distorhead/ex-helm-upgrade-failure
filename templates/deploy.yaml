@@ -1,15 +1,31 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: myserver
+  name: myserver1
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        service: myserver
+        service: myserver1
     spec:
       containers:
       - name: main
-        command: ["/bin/bash", "-c", "while true ; do date ; sleep 1 done"]
+        command: ["/bin/bash", "-c", "while true ; do date ; sleep 1 ; done"]
+        image: ubuntu:16.04
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: myserver2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: myserver2
+    spec:
+      containers:
+      - name: main
+        command: ["/bin/bash", "-c", "while true ; do date ; sleep 1 ; done"]
         image: ubuntu:16.04
